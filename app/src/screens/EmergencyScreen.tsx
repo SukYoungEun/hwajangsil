@@ -18,10 +18,9 @@ export default function EmergencyScreen() {
   const alts = toilets.slice(1, 3);
 
   const navigate = (toilet: typeof closest) => {
-    if (!toilet || !coords) return;
-    // 네이버 지도 앱으로 길안내
-    const url = `nmap://route/walk?dlat=${toilet.lat}&dlng=${toilet.lng}&dname=${encodeURIComponent(toilet.name)}`;
-    const fallback = `https://map.naver.com/v5/directions/-/${toilet.lng},${toilet.lat},${encodeURIComponent(toilet.name)}/-/walk`;
+    if (!toilet) return;
+    const url = `kakaomap://route?ep=${toilet.lat},${toilet.lng}&by=FOOT`;
+    const fallback = `https://map.kakao.com/link/to/${encodeURIComponent(toilet.name)},${toilet.lat},${toilet.lng}`;
     Linking.openURL(url).catch(() => Linking.openURL(fallback));
   };
 
