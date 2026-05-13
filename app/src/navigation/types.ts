@@ -8,3 +8,9 @@ export type RootStackParamList = {
   Review: { toilet: Toilet };
   Visits: undefined;
 };
+
+export type TabParamList = {
+  Home: undefined;
+  Search: undefined;
+  My: undefined;
+};

@@ -1,4 +1,5 @@
-import { useNavigation } from '@react-navigation/native';
+import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
+import { CompositeNavigationProp, useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { ActivityIndicator, FlatList, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -6,10 +7,13 @@ import { ToiletCard } from '../components/ToiletCard';
 import { colors } from '../constants/colors';
 import { useLocation } from '../hooks/useLocation';
 import { useNearbyToilets } from '../hooks/useNearbyToilets';
-import { RootStackParamList } from '../navigation/types';
+import { RootStackParamList, TabParamList } from '../navigation/types';
 import { Toilet } from '../types';
 
-type Nav = NativeStackNavigationProp<RootStackParamList>;
+type Nav = CompositeNavigationProp<
+  BottomTabNavigationProp<TabParamList>,
+  NativeStackNavigationProp<RootStackParamList>
+>;
 
 const FILTERS = [
   { key: 'all',     label: '전체' },
